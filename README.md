@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CEIBA — Ropa hecha con raíces
 
-## Getting Started
+Sitio web de la marca de ropa CEIBA, construido con **Next.js 16**, **TypeScript**, **Tailwind CSS v4**, **shadcn/ui** y **framer-motion**.
 
-First, run the development server:
+## Páginas
+
+| Ruta | Contenido |
+|---|---|
+| `/` | Inicio: hero, colecciones, favoritos, estadísticas, lookbook y newsletter |
+| `/coleccion` | Catálogo con filtros por categoría y orden por precio |
+| `/nosotros` | Historia, valores, indicadores de impacto y línea de tiempo |
+| `/contacto` | Formulario de contacto y tiendas |
+
+## Desarrollo local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Despliegue en Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Entra a [vercel.com/new](https://vercel.com/new) e importa el repositorio de GitHub.
+2. Vercel detecta Next.js automáticamente; no hace falta cambiar ninguna configuración:
+   - **Framework Preset:** Next.js
+   - **Build Command:** `npm run build`
+   - **Install Command:** `npm install`
+   - **Node.js:** 20.x o superior
+3. No se necesitan variables de entorno.
+4. Pulsa **Deploy**.
 
-## Learn More
+Las imágenes se cargan desde `images.unsplash.com` (permitido en `next.config.ts`) y se optimizan con `next/image`.
 
-To learn more about Next.js, take a look at the following resources:
+## Estructura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/                  Páginas (App Router)
+components/           Componentes del sitio
+components/ui/        Componentes shadcn (incl. stats-counter-block-baseui)
+lib/data.ts           Productos, imágenes y navegación
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Los formularios (contacto y newsletter) solo muestran un mensaje de confirmación; aún no envían datos a un servidor.
